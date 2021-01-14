@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+            <!--  | 2021 - Guillaume Bullet | Évaluation UE1 : Algorithmie | VERSION 2 -->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Police d'écriture -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <!-- Titre site -->
+        <title> Pierre Feuille Ciseaux Lézard Spock</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="version2.css">
+    </head>
+
+
+    <body>
+
+        <header>   
+
+        </header>
+
+        <main>
+
+            <div>
+                <h1> Pierre - Feuille - Ciseaux - Lézard - Spock (V.2) </h1>
+            </div>
+
+            <section> <!-- Affichage boutons et HUD -->
+
+                <!-- Boutons de choix de l'action -->
+                <div id="boutonsChoixActions"> </br> </br>
+                    <button class="boutonChoix" id="boutonPierre"> Pierre </button>
+                    <button class="boutonChoix" id="boutonFeuille"> Feuille </button>
+                    <button class="boutonChoix" id="boutonCiseaux"> Ciseaux </button>
+                    <button class="boutonChoix" id="boutonLézard"> Lézard </button>
+                    <button class="boutonChoix" id="boutonSpock"> Spock </button>
+                </div> 
+
+                    </br> </br>
+
+                <div> <!-- Zone de Résultat -->
+                    <h3> --- Actions --- </h3>
+                    <p id="actionJOUEUR"> - Action du Joueur :  </p>
+                    <p id="actionIA"> - Action de l' I.A : </p>
+                    <h3> *** Résultat *** </h3>
+                    <p id="ZoneResultat"> Victoire de :  </p>
+                </div>
+
+            </br>
+
+            <div> 
+                <h3> Victoire en 3 manches gagnantes : </h3>
+                <p id="points_JOUEUR"> Points du Joueur : </p>
+                <p id="points_IA"> Points de l' I.A : </p>
+                <h4 id="ZoneVictoire"> Victoire de : ... </h4>
+            </div>
+
+                <div> </br> </br>
+                    <!-- Bouton de reload/rafraichissement de la page -->
+                    <input type="button" onclick= 'window.location.reload(false)' value="Relancer"/>
+                </div> </br> </br>
+
+            </section>
+
+        </main>
+
+        <footer>
+
+            <p> | 2021 - Guillaume Bullet | Évaluation UE1 : Algorithmie | </p>
+
+                <hr>
+
+            <button id="BoutonChangementVersion"> <a href="index.html" > Version 1  </a> </button>
+
+        </footer>
+
+
+            <!-- JavaScript -->
+
+        <script src="version2.js"> </script>
+
+
+        
+    </body>
+
+</html>
