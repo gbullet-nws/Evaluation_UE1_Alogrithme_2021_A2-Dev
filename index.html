@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+            <!--  | 2021 - Guillaume Bullet | Évaluation UE1 : Algorithmie |  -->
+            <!-- Code spaghetti mais au moins tout est là -->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Police d'écriture -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <!-- Titre site -->
+        <title> Pierre Feuille Ciseaux </title>
+
+        <!-- CSS // à mettre dans une stylesheet -->
+        <style>
+            
+            @media only screen and (max-width: 400px)
+            {
+                html
+                {
+                    padding-left: 5%;
+                    padding-right: 5%;
+                    padding-top: 5%;
+                    padding-bottom: 5%;
+                    text-align: center;
+                }
+            }
+
+            @media only screen and (min-width: 401px) and (max-width: 600px)
+            {
+                html
+                {
+                    padding-left: 10%;
+                    padding-right: 10%;
+                    padding-top: 10%;
+                    padding-bottom: 10%;
+                    text-align: center;
+                }
+            }
+
+            @media only screen and (min-width: 600px)
+            {
+                html
+                {
+                    padding-left: 20%;
+                    padding-right: 20%;
+                    padding-top: 20%;
+                    padding-bottom: 20%;
+                    text-align: center;
+                 }
+            }
+
+            html
+            {
+                font-family: 'Roboto', sans-serif;
+            }
+            main section
+            {
+                background-color:rgb(225, 225, 225);
+            }
+
+        </style>
+    </head>
+
+
+    <body>
+
+        <header>   
+
+        </header>
+
+        <main>
+
+            <div>
+                <h1> Pierre - Feuille - Ciseaux - Lézard - Spock </h1>
+            </div>
+
+            <section> <!-- Affichage boutons et HUD -->
+
+                <!-- Boutons de choix de l'action -->
+                <div id="boutonsChoixActions"> </br> </br>
+                    <button class="boutonChoix" id="boutonPierre"> Pierre </button>
+                    <button class="boutonChoix" id="boutonFeuille"> Feuille </button>
+                    <button class="boutonChoix" id="boutonCiseaux"> Ciseaux </button>
+                    <button class="boutonChoix" id="boutonLézard"> Lézard </button>
+                    <button class="boutonChoix" id="boutonSpock"> Spock </button>
+                </div> 
+
+                    </br> </br>
+
+                <div> <!-- Zone de Résultat -->
+                    <h3> --- Actions --- </h3>
+                    <p id="actionJOUEUR" style="color: green"> - Action du Joueur :  </p>
+                    <p id="actionIA" style="color: red"> - Action de l' I.A : </p>
+                    <h3> *** Résultat *** </h3>
+                    <p id="ZoneResultat"> Victoire de :  </p>
+                </div>
+
+                <div> </br> </br>
+                    <!-- Bouton de reload/rafraichissement de la page -->
+                    <input type="button" onclick= 'window.location.reload(false)' value="Relancer"/>
+                </div> </br> </br>
+
+            </section>
+
+        </main>
+
+        <footer>
+            <p> | 2021 - Guillaume Bullet | Évaluation UE1 : Algorithmie | </p>
+        </footer>
+
+                            <!-- JavaScript -->
+
+        <script>
+
+                    /*///// JEU === Pierre Feuille Ciseaux Lézard Spock \\\\\*\ 
+                    -----------------------------------------------------------
+
+            /* la constante BOUTONS contient les 5 boutons avec la class="boutonChoix" */
+            const BOUTONS = document.querySelectorAll("button.boutonChoix");
+            console.log(BOUTONS);
+
+            let pointsDuJoueur = 0;
+            let pointsDeIA = 0;
+
+            /* ( déclaration du compteur de boutons ; compteur plus petit que le nombre de boutons ; compteur augmente */
+            for(let i = 0; i < BOUTONS.length; i++)
+            {
+                /* pour chaque bouton du compteur, on écoute l'Event "click", auquel on attache une fonction */
+                BOUTONS[i].addEventListener("click", function() 
+                {   
+                    /* initialisation des constantes JOUEUR et IA */
+                    const JOUEUR = BOUTONS[i].innerHTML;
+                    const IA = BOUTONS[Math.floor(Math.random() * BOUTONS.length)].innerHTML;
+
+                    /* Affichage des actions du Joueur et de l'IA */
+                    actionJOUEUR.innerHTML = "- Action du Joueur :" + JOUEUR;
+                    actionIA.innerHTML = "- Action de l' I.A : " + IA;
+
+                    /* variable qui va remplacer le HTML de id="zoneResultat" */
+                    //let resultat = "";
+
+                    /* conditions de victoire, égalité ou défaite */ 
+                    /* attention aux espace dans les boutons HTML pour l'égalité stricte ("Ciseaux" != " Ciseaux ") */
+                    if ((JOUEUR == " Pierre " && IA == " Ciseaux ") || (JOUEUR == " Pierre " && IA == " Lézard ") ||
+                        (JOUEUR == " Feuille " && IA == " Pierre ") || (JOUEUR == " Feuille " && IA == " Spock ") ||
+                        (JOUEUR == " Ciseaux " && IA == " Feuille ") || (JOUEUR == " Ciseaux " && IA == " Lézard ") ||
+                        (JOUEUR == " Lézard " && IA == " Spock ") || (JOUEUR == " Lézard " && IA == " Feuille ") ||
+                        (JOUEUR == " Spock " && IA == " Ciseaux ") || (JOUEUR == " Spock " && IA == " Pierre "))
+                    {
+                        resultat = " Gagné ! ";
+                    }
+                    else if (JOUEUR === IA )
+                    {
+                        resultat = " Égalité... ";
+                    }
+                    else
+                    {
+                        resultat = " Perdu ! ";
+                    }
+                    
+                    /* remplacement du HTML de id="zoneResultat" */
+                    document.getElementById("ZoneResultat").innerHTML = resultat;
+                    /* ne fonctionnait pas */
+                    // ZoneResultat.innerHTML = resultat;
+
+                    console.log(`Joueur : ${JOUEUR} VS Intelligence Artificielle : ${IA}`);
+                    console.log(resultat);
+
+                });
+
+            } 
+
+            
+
+        </script>
+
+
+        
+    </body>
+
+</html>
